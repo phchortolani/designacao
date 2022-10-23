@@ -1,0 +1,16 @@
+{
+  "name": "designacao",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "excel-date-to-js": "^1.1.5",
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "xlsx": "^0.18.5"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "type": "module"
+}
