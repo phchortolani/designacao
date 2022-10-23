@@ -4,9 +4,9 @@ const app = express()
 const port = process.env.PORT || 3000
 import { Obter, ObterPorData } from './js/obter.js'
 
-app.use(app.static('public'))
+/* app.use(app.static('public'))
 
-app.use(app.json({ limit: '50mb' }));
+app.use(app.json({ limit: '50mb' })); */
 
 app.get('/', (req, res) => {
 
