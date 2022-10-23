@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "excel-date-to-js": "^1.1.5",
     "express": "^4.18.2",
     "moment": "^2.29.4",
