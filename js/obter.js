@@ -37,5 +37,5 @@ export function ObterPorData(DataPesquisa) {
 }
 
 function TrocarData(data) {
-    return moment(getJsDateFromExcel(data)).add(1, 'day').format("DD/MM/yyyy");
+    return moment(getJsDateFromExcel(data)).format("DD/MM/yyyy");
 }

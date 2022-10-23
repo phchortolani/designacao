@@ -17,15 +17,18 @@
 
 <script>
     function executar() {
-        var recebe = document.getElementById("data").value;
-        document.getElementById("res").innerHTML = recebe;
-
-        ObterPlaniha()
+        var resultado = ObterPlaniha('06-10-2022')
     }
 
-    async function ObterPlaniha() {
-        var ret = await fetch('http://localhost:3000/Obter/06-11-2022').then(async (res) => await res.json())
-        console.log(ret)
+
+    async function ObterPlaniha(data) {
+        var ret = []
+        if (data) {
+            ret = await fetch('https://designacao.herokuapp.com/Obter/' + data).then(async (res) => await res.json())
+        } else
+            ret = await fetch('https://designacao.herokuapp.com/Obter').then(async (res) => await res.json())
+
+        return ret;
     }
 
 </script>
