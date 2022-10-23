@@ -23,7 +23,6 @@ export function Obter() {
                 res["Dia"] = TrocarData(res.Dia)
             }
 
-
             data.push(res)
         })
     }
