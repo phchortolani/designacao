@@ -1,7 +1,7 @@
 
 import xlsx from 'xlsx'
 import gts from 'excel-date-to-js'
-const { readFile, utils, writeFile } = xlsx;
+const { readFile, utils } = xlsx;
 const { getJsDateFromExcel } = gts;
 import moment from 'moment/moment.js';
 
