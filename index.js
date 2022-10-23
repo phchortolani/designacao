@@ -4,6 +4,14 @@ const app = express()
 const port = 3000
 import { ObterPorData } from './js/obter.js'
 
+
+
+app.get('/', (req, res) => {
+
+    return res.send("isRunning");
+
+})
+
 app.get('/Obter/:data', (req, res) => {
 
     let ret = ObterPorData(req.params.data.replaceAll('-', '/'));
