@@ -13,21 +13,21 @@
     }
 
     dialog::backdrop {
-        background: rgb(125, 109, 197);
         opacity: 0.8;
+        background: #fff;
     }
 
     dialog {
         border: none;
-        box-shadow: 0px 4px 6px 3px #12121273;
+        /*  box-shadow: 0px 4px 6px 3px #12121273; */
         border-radius: 10px;
-        width: calc(100vw - 10px);
-        max-width: 500px;
         text-align: center;
+        width: 100%;
     }
 
     body {
         height: 100vh;
+        background: #fff;
     }
 
     button {
@@ -48,10 +48,15 @@
         margin: 20px
     }
 
+    #HTMLGenerate {
+        text-align: left;
+    }
+
     .main {
         height: 100%;
         place-content: center;
-        display: grid
+        display: grid;
+        text-align: center;
     }
 </style>
 
@@ -93,7 +98,6 @@
 
         if (!ret) html.innerHTML = "Nenhum dado encontrado para a data: " + data.replaceAll("-", "/")
         document.querySelector(".res").appendChild(html);
-
 
         document.querySelector("dialog").showModal()
     }
