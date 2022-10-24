@@ -5,13 +5,20 @@
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
+    "create-react-app": "^5.0.1",
     "excel-date-to-js": "^1.1.5",
     "express": "^4.18.2",
     "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "xlsx": "^0.18.5"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }

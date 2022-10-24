@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designacao</title>
+</head>
+<style>
+    * {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    dialog::backdrop {
+        background: rgb(125, 109, 197);
+        opacity: 0.8;
+    }
+
+    dialog {
+        border: none;
+        box-shadow: 0px 4px 6px 3px #12121273;
+        border-radius: 10px;
+        width: calc(100vw - 10px);
+        max-width: 500px;
+        text-align: center;
+    }
+
+    body {
+        height: 100vh;
+    }
+
+    button {
+        margin: 10px 0;
+        text-align: center;
+        padding: 0.8rem;
+        font-size: 15px;
+        border: none;
+        border-radius: 10px;
+    }
+
+    input {
+        text-align: center;
+        padding: 0.8rem;
+        font-size: 15px;
+        border: none;
+        border-radius: 10px;
+        margin: 20px
+    }
+
+    .main {
+        height: 100%;
+        place-content: center;
+        display: grid
+    }
+</style>
+
+<body>
+    <div class="main">
+        <input id="data" type="date" />
+        <button onclick="executar()">CONSULTAR</button>
+        <dialog>
+            <div class="res"></div>
+            <button onclick="document.querySelector('dialog').close()">Fechar</button>
+        </dialog>
+    </div>
+
+
+</body>
+
+<script>
+    function executar() {
+        ObterPlaniha(document.getElementById("data").value.split("-").reverse().join('-'))
+    }
+    async function ObterPlaniha(data) {
+        const { ret } = await fetch('https://designacao.herokuapp.com/Obter/' + data).then(async (res) => await res.json())
+
+        document.getElementById("HTMLGenerate")?.remove()
+
+
+        let html = document.createElement("div");
+        html.id = "HTMLGenerate"
+        ret?.forEach(e => {
+            if (!data) html.appendChild(document.createElement("hr"))
+
+            for (let prop in e) {
+                let value = e[prop];
+                let p = document.createElement("p")
+                p.innerHTML = prop + ": " + value
+                html.appendChild(p);
+            }
+        });
+
+        if (!ret) html.innerHTML = "Nenhum dado encontrado para a data: " + data.replaceAll("-", "/")
+        document.querySelector(".res").appendChild(html);
+
+
+        document.querySelector("dialog").showModal()
+    }
+
+</script>
+
+</html>
