@@ -50,6 +50,8 @@
 
     #HTMLGenerate {
         text-align: left;
+        display: grid;
+        justify-content: center;
     }
 
     .main {
@@ -63,7 +65,9 @@
 <body>
     <div class="main">
         <input id="data" type="date" />
-        <button onclick="executar()">CONSULTAR</button>
+        <button onclick="executar('TODAS')">TODAS</button>
+        <button onclick="executar('PARTES')">PARTES</button>
+        <button onclick=" executar('MECANICAS')">MECANICAS</button>
         <dialog>
             <div class="res"></div>
             <button onclick="document.querySelector('dialog').close()">Fechar</button>
@@ -76,14 +80,15 @@
 <script>
     document.getElementById("data").value = new Date().toISOString().split('T')[0]
 
-    function executar() {
-        ObterPlaniha(document.getElementById("data").value.split("-").reverse().join('-'))
+    const mecanicas = ["INDICADOR 1", "ZOOM", "MICROFONE", "MICROFONE 2", "SOM"]
+    function executar(filtro) {
+        const dataConvertida = document.getElementById("data").value.split("-").reverse().join('-')
+        ObterPlaniha(dataConvertida, filtro)
     }
-    async function ObterPlaniha(data) {
+    async function ObterPlaniha(data, filtro) {
         const { ret } = await fetch('https://designacao.herokuapp.com/Obter/' + data).then(async (res) => await res.json())
 
         document.getElementById("HTMLGenerate")?.remove()
-
 
         let html = document.createElement("div");
         html.id = "HTMLGenerate"
@@ -94,7 +99,20 @@
                 let value = e[prop];
                 let p = document.createElement("p")
                 p.innerHTML = prop + ": " + value
-                html.appendChild(p);
+                if (mecanicas.includes(prop)) {
+                    p.style.color = "blue"
+                    p.style.fontWeight = 500
+                }
+                if (filtro == "PARTES") {
+                    if (!mecanicas.includes(prop)) html.appendChild(p);
+                }
+                if (filtro == "MECANICAS") {
+                    if (mecanicas.includes(prop)) html.appendChild(p);
+                }
+                if (filtro == "TODAS") {
+                    html.appendChild(p);
+                }
+
             }
         });
 
