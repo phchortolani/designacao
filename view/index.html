@@ -74,6 +74,8 @@
 </body>
 
 <script>
+    document.getElementById("data").value = new Date().toISOString().split('T')[0]
+
     function executar() {
         ObterPlaniha(document.getElementById("data").value.split("-").reverse().join('-'))
     }
