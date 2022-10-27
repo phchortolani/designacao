@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    if (!__dirname) return res.send("skiped")
+    if (!__dirname) return console.log("in get without dirname")
     res.sendFile(__dirname + '/view/index.html');
 })
 
