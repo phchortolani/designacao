@@ -21,6 +21,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
+    if(!__dirname) return res.send("skiped")
     res.sendFile(__dirname + '/view/index.html');
 })
 
