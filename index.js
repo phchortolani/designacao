@@ -33,13 +33,13 @@ app.get('/Obter/:data', (req, res) => {
 })
 
 app.get('/Obter', (req, res) => {
-
     let ret = Obter();
     if (ret.length == 0) res.send({ StatusPesquisa: false });
     else res.json({ ret, StatusPesquisa: true })
-
 })
 
 app.listen(port, () => {
     if (port === 3000) console.log(`Example app listening on port: http://localhost:${port}`)
+    else console.log(`exec in port from server: ${port}`)
+
 })
