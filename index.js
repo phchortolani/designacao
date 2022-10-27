@@ -1,12 +1,11 @@
-
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import express from 'express'
-const app = express()
-const port = process.env.PORT || 3000
 import { Obter, ObterPorData } from './js/obter.js'
 import cors from 'cors'
 
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+const app = express()
+const port = process.env.PORT || 3000
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -21,7 +20,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    if(!__dirname) return res.send("skiped")
+    if (!__dirname) return res.send("skiped")
     res.sendFile(__dirname + '/view/index.html');
 })
 
