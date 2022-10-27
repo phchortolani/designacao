@@ -16,18 +16,18 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
     app.use(cors());
-    
+
     next();
 });
 
 app.get('/', (req, res) => {
-    return res.sendFile(__dirname + '/view/index.html');
+    res.sendFile(__dirname + '/view/index.html');
 })
 
 app.get('/Obter/:data', (req, res) => {
     let ret = ObterPorData(req.params.data.replaceAll('-', '/'));
 
-    if (ret.length == 0) return res.send({ StatusPesquisa: false });
+    if (ret.length == 0) res.send({ StatusPesquisa: false });
     else res.json({ ret, StatusPesquisa: true })
 
 })
@@ -35,7 +35,7 @@ app.get('/Obter/:data', (req, res) => {
 app.get('/Obter', (req, res) => {
 
     let ret = Obter();
-    if (ret.length == 0) return res.send({ StatusPesquisa: false });
+    if (ret.length == 0) res.send({ StatusPesquisa: false });
     else res.json({ ret, StatusPesquisa: true })
 
 })
