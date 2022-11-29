@@ -29,7 +29,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/Obter/:data', (req, res) => {
-    let ret = ObterPorData(req.params.data.replaceAll('-', '/'));
+    let ret;
+    console.log(req.params);
+
+    if(req.params?.data){
+       ret = ObterPorData(req.params.data.replaceAll('-', '/'));
+       console.log('2');
+    }
+   
 
     if (ret.length == 0) res.send({ StatusPesquisa: false });
     else res.json({ ret, StatusPesquisa: true })
