@@ -29,10 +29,9 @@ app.get('/', (req, res) => {
 })
 
 app.get('/Obter/:data', (req, res) => {
-    let dataSelected;
-    console.log(req.params.data);
+    let dataSelected = req.params.data;
     for(let i = 0; i < 2; i++){
-        dataSelected = req.params.data.replace('-', '/');
+        dataSelected = dataSelected.replace('-', '/');
     }
     console.log(dataSelected);
     let ret = ObterPorData(dataSelected);
