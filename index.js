@@ -29,12 +29,15 @@ app.get('/', (req, res) => {
 })
 
 app.get('/Obter/:data', (req, res) => {
-    let ret;
+    let ret = "";
+  ;
     console.log(req.params);
 
     if(req.params?.data){
-       ret = ObterPorData(req.params.data.replaceAll('-', '/'));
-       console.log('2');
+       let dataPesquisa = req.params.data.toString();
+       console.log(dataPesquisa);
+       ret = ObterPorData(dataPesquisa.replaceAll('-', '/'));
+       
     }
    
 
