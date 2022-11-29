@@ -29,17 +29,13 @@ app.get('/', (req, res) => {
 })
 
 app.get('/Obter/:data', (req, res) => {
-    let ret = "";
-  ;
-    console.log(req.params);
-
-    if(req.params?.data){
-       let dataPesquisa = req.params.data.toString();
-       console.log(dataPesquisa);
-       ret = ObterPorData(dataPesquisa.replaceAll('-', '/'));
-       
+    let dataSelected;
+    console.log(req.params.data);
+    for(let i = 0; i < 2; i++){
+        dataSelected = req.params.data.replace('-', '/');
     }
-   
+    console.log(dataSelected);
+    let ret = ObterPorData(dataSelected);
 
     if (ret.length == 0) res.send({ StatusPesquisa: false });
     else res.json({ ret, StatusPesquisa: true })
