@@ -83,7 +83,7 @@
         ObterPlaniha(dataConvertida, filtro)
     }
     async function ObterPlaniha(data, filtro) {
-        const { ret } = await fetch('https://designacao.herokuapp.com/Obter/' + data).then(async (res) => await res.json())
+        const { ret } = await fetch('https://designacao.onrender.com/Obter/' + data).then(async (res) => await res.json())
 
         document.getElementById("HTMLGenerate")?.remove()
 
